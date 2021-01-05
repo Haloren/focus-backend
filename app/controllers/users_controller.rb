@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         if user.save
             render json: user
         else
-            render json: {message: user.errors.full_messages.to_sentence}
+            render json: {message: "Email and/or Password are incorrect"}
         end
     end
 
