@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     
     def index
         users = User.all
-        render json: users, include: [:weather, :todos, :events]
+        render json: users
     end
 
     def create
