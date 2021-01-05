@@ -10,7 +10,7 @@ class WeathersController < ApplicationController
         if weather.save
             render json: weather
         else
-            render json: {message: user.errors.full_messages.to_sentence}
+            render json: {message: weather.errors.full_messages.to_sentence}
         end
     end
 
