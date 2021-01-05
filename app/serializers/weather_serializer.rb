@@ -1,4 +1,4 @@
 class WeatherSerializer < ActiveModel::Serializer
   attributes :id, :zip
-  has_one :user
+  belongs_to :user
 end
