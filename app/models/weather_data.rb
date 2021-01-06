@@ -4,7 +4,9 @@ class WeatherData
 
     # https://openweathermap.org/weather-data
     def initialize(location)
-        @url = "https://api.openweathermap.org/data/2.5/weather?zip=85086,&appid=#{ENV['WEATHER_API_KEY']}" # move to a model or make into a helper
+        user_zip = '85086'
+
+        @url = "https://api.openweathermap.org/data/2.5/weather?zip=#{user_zip},&appid=#{ENV['WEATHER_API_KEY']}" # move to a model or make into a helper
         # byebug
         @uri = URI(@url)
         @response = Net::HTTP.get(@uri)
@@ -13,6 +15,7 @@ class WeatherData
 
         @kelvintemp = (@output['main']['temp']).to_i 
         @tofahrenheit = (@kelvintemp-273.15)*9/5+32
+        @tocelsius = (@kelvintemp-273.15)
     end
 
 end

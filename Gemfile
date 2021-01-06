@@ -45,4 +45,6 @@ gem 'active_model_serializers'
 
 gem "dotenv-rails"
 
+gem 'http'
+
 # gem "omniauth-google-oauth2", "~> 0.8.0"
