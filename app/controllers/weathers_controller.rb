@@ -1,4 +1,5 @@
 class WeathersController < ApplicationController
+    before_action :set_user
 
     def show
         weather = Weather.find_by(id: params[:id])
@@ -26,6 +27,10 @@ class WeathersController < ApplicationController
     end
 
     private
+    def set_user
+        @user = User.find(params[:user_id])
+    end
+
     def weather_params
         params.require(:weather).permit(:zip, :user_id)
     end

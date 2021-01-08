@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+    before_action :set_user
 
     def index
         events = Event.all
@@ -31,6 +32,10 @@ class EventsController < ApplicationController
     end
 
     private
+    def set_user
+        @user = User.find(params[:user_id])
+    end
+
     def event_params
         params.require(:event).permit(:title, :date, :user_id)
     end

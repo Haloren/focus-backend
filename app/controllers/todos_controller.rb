@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+    before_action :set_user
 
     def index
         todos = Todo.all
@@ -31,6 +32,10 @@ class TodosController < ApplicationController
     end
 
     private
+    def set_user
+        @user = User.find(params[:user_id])
+    end
+
     def todo_params
         params.require(:todo).permit(:item, :user_id)
     end
