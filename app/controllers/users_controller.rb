@@ -7,16 +7,17 @@ class UsersController < ApplicationController
 
     def create
         user = User.new(user_params)
+        byebug
         if user.save
             render json: user
         else
-            render json: {message: "Email and/or Password are incorrect"}
+            render json: {message: user.errors.full_messages.to_sentence}
         end
     end
 
     private
     def user_params
-        params.require(:user).permit(:name, :email)
+        params.require(:user).permit(:name, :email, :password)
     end
 
 end
