@@ -1,5 +1,9 @@
-Backend for focus-frontend
-Run on localhost 3001 
+# Mostly Focused - Backend
+This API-backend is to be used with [Focus-frontend](https://github.com/Haloren/focus-frontend)
+
+# Start the Rails server
+Run on localhost 3001
+     $ rails s -p 3001
 
 # README
 
