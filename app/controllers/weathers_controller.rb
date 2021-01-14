@@ -17,8 +17,10 @@ class WeathersController < ApplicationController
         end
     end
 
+
+
     def destroy
-        weather = Weather.all.find_by(id: parmas[:id])
+        weather = Weather.all.find_by(id: params[:id])
         user = User.find(weather.user_id)
         if weather
             weather.destroy

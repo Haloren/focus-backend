@@ -23,7 +23,8 @@ class TodosController < ApplicationController
     end
 
     def destroy
-        todo = Todo.all.find_by(id: parmas[:id])
+        debugger;
+        todo = Todo.all.find_by(id: params[:id])
         user = User.find(todo.user_id)
         if todo
             todo.destroy

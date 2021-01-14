@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     end
 
     def destroy
-        event = Event.all.find_by(id: parmas[:id])
+        event = Event.all.find_by(id: params[:id])
         user = User.find(event.user_id)
         if event
             event.destroy
