@@ -17,7 +17,17 @@ class WeathersController < ApplicationController
         end
     end
 
-
+    def update
+        # byebug
+        weather = Weather.find_by(id: params[:id])
+        user = User.find(weather.user_id)
+        if weather
+            weather.update(zip: params["weather"]["zip"])
+            render json:user
+        else
+            render json: {message: "Change zip code failed"}
+        end
+    end
 
     def destroy
         weather = Weather.all.find_by(id: params[:id])
