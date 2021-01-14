@@ -3,7 +3,7 @@ class Weather < ApplicationRecord
 
   validates :zip, presence: true, length: { is: 5 }
 
-  def self.get_data_from_weather_data(zipcode)
+  def self.get_data_from_weather_data(zipcode = "89412")
     resp = WeatherData.new(zipcode) 
     weather_data = resp.results
   end

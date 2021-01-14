@@ -12,9 +12,11 @@ class TodosController < ApplicationController
     end
 
     def create
-        todo = Todo.new(todo_params)
+        # todo = Todo.new(todo_params)
+        todo = @user.todos.new(todo_params)
         if todo.save
-            render json: todo
+            # render json: todo
+            render json: @user
         else
             render json: {message: todo.errors.full_messages.to_sentence}
         end
