@@ -7,9 +7,11 @@ class WeathersController < ApplicationController
     end
 
     def create
-        weather = Weather.new(weather_params)
+        # weather = Weather.new(weather_params)
+        weather = @user.weathers.new(weather_params)
         if weather.save
-            render json: weather
+            # render json: weather
+            render json: @user
         else
             render json: {message: weather.errors.full_messages.to_sentence}
         end

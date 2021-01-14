@@ -12,9 +12,11 @@ class EventsController < ApplicationController
     end
 
     def create
-        event = Event.new(event_params)
+        # event = Event.new(event_params)
+        event = @user.events.new(event_params)
         if event.save
-            render json: event
+            # render json: event
+            render json: @user
         else
             render json: {message: event.errors.full_messages.to_sentence}
         end
