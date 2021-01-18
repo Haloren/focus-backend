@@ -5,6 +5,14 @@ class UsersController < ApplicationController
         render json: users
     end
 
+    def show
+        user = User.find_by(id: params[:id])
+        weather = Weather.find_by(user_id: user.id)
+        zipcode = weather.zip
+        weatherdata = WeatherData.new(zipcode)
+        render json: weatherdata
+    end
+
     def create
         user = User.new(user_params)
         # byebug
