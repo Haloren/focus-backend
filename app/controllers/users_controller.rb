@@ -7,10 +7,16 @@ class UsersController < ApplicationController
 
     def show
         user = User.find_by(id: params[:id])
-        weather = Weather.find_by(user_id: user.id)
-        zipcode = weather.zip
+            if user
+                weather = Weather.find_by(user_id: user.id)
+                zipcode = weather.zip
+            else
+                zipcode = 86337
+            end
         weatherdata = WeatherData.new(zipcode)
         render json: weatherdata
+        # @tofahrenheit = (@kelvintemp-273.15)*9/5+32
+        # @tocelsius = (@kelvintemp-273.15)
     end
 
     def create
