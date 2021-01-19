@@ -9,6 +9,7 @@ class UsersController < ApplicationController
         user = User.new(user_params)
         # byebug
         if user.save
+            Weather.create(zip: '86337', user_id: user.id) #Default Zipcode when user is created
             render json: user
         else
             render json: {message: user.errors.full_messages.to_sentence}
