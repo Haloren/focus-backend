@@ -2,8 +2,22 @@ class WeathersController < ApplicationController
     before_action :set_user
 
     def show
-        weather = Weather.find_by(id: params[:id])
-        render json: weather
+        # weather = Weather.find_by(id: params[:id])
+        # render json: weather
+
+        def show
+            user = User.find_by(id: params[:id])
+                if user
+                    user_weather = Weather.find_by(user_id: user.id)
+                    zipcode = user_weather.zip
+                else
+                    zipcode = 86337
+                end
+            weather = WeatherData.new(zipcode)
+            render json: weather
+            # @tofahrenheit = (@kelvintemp-273.15)*9/5+32
+            # @tocelsius = (@kelvintemp-273.15)
+        end
     end
 
     def create
